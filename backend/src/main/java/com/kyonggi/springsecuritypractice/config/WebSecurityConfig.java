@@ -32,15 +32,15 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests((authorize) -> {
-            authorize.requestMatchers("/login", "signup", "user").permitAll();
+            authorize.requestMatchers("/login", "/signup", "/user").permitAll();
             authorize.anyRequest().authenticated();
         });
-        http.formLogin((login) -> {
+        http.formLogin(login -> {
             login.loginPage("/login");
             login.defaultSuccessUrl("/articles");
         });
-        http.logout((logout) -> {
-            logout.logoutSuccessUrl("login");
+        http.logout(logout -> {
+            logout.logoutSuccessUrl("/login");
             logout.invalidateHttpSession(true);
         });
         http.csrf(AbstractHttpConfigurer::disable);
