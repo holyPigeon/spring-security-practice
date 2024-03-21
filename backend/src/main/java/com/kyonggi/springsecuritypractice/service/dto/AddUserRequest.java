@@ -7,6 +7,6 @@ import lombok.Getter;
 @Builder
 public class AddUserRequest {
 
-    private String email;
+    private String loginId;
     private String password;
 }
