@@ -20,14 +20,14 @@ const SignUp = () => {
     }
 
     axios
-      .post("http://localhost:8080/api/join", {
+      .post("/api/join", {
         loginId: inputId.current.value,
         password: inputPw.current.value,
       })
       .then((res) => {
         alert("회원가입이 완료되었습니다.");
         console.log(res.data);
-        // navigate("/");
+        navigate("/login");
       })
       .catch(() => {
         console.log("loginId -> " + inputId.current.value);
@@ -40,7 +40,7 @@ const SignUp = () => {
   return (
     <>
       <h1 className="text-primary text-xl font-semibold text-center transition-all duration-200 md:text-3xl">
-        <span className="text-base-content">회원 가입</span>
+        <span className="text-base-content">Sign Up</span>
       </h1>
       <form className="space-y-4" onSubmit={handleSignUp}>
         <div>
@@ -69,7 +69,7 @@ const SignUp = () => {
           <div className="flex gap-2">
             Already have an account?
             <Link
-              to="/"
+              to="/login"
               className="text-gray-600 hover:underline hover:text-blue-600"
             >
               Login

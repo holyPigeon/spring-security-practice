@@ -10,14 +10,14 @@ const LogIn = () => {
     event.preventDefault();
 
     axios
-      .post("http://localhost:8080/api/login", {
+      .post("/api/login", {
         loginId: inputId.current.value,
         password: inputPw.current.value,
       })
       .then((res) => {
         sessionStorage.setItem("user_id", res.data.id);
         sessionStorage.setItem("name", res.data.nickname);
-        window.location.reload();
+        // window.location.reload();
       })
       .catch(() => {
         alert("입력하신 아이디 또는 비밀번호가 일치하지 않습니다.");
@@ -29,7 +29,7 @@ const LogIn = () => {
     <>
       <h1 className="font-semibold text-center">
         <div className="text-primary inline-flex text-xl transition-all duration-200 md:text-3xl">
-          <span className="text-base-content uppercase">Spring Security</span>
+          <span className="text-base-content uppercase">Log In</span>
         </div>
       </h1>
       <form className="space-y-4" onSubmit={handleLogIn}>
